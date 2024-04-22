@@ -9,6 +9,12 @@ this->itemDescription = itemDescription;
 this->itemPrice = itemPrice;
 this->itemQuantity = itemQuantity;
 }
+//Default constructor
+ItemToPurchase::ItemToPurchase() {
+  itemName = "none";
+  itemDescription = "none";
+  itemPrice = 0;
+  itemQuantity = 0;
 // SetDescription() mutator & GetDescription() accessor (2 pts)
 void ItemToPurchase::SetDescription(string& description) {
   itemDescription = description;
