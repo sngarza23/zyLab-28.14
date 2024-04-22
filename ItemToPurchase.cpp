@@ -9,9 +9,18 @@ this->itemDescription = itemDescription;
 this->itemPrice = itemPrice;
 this->itemQuantity = itemQuantity;
 }
-
 // SetDescription() mutator & GetDescription() accessor (2 pts)
+void ItemToPurchase::SetDescription(string& description) {
+  itemDescription = description;
+}
+string ItemToPurchase::GetDescription() {
+  return itemDescription;
+}
 // PrintItemCost() - Outputs the item name followed by the quantity, price, and subtotal
+void ItemToPurchase::PrintItemCost() {
+  cout << itemName << " " << itemQuantity << " "<< itemPrice << " "<< itemPrice * itemQuantity << endl;
 // PrintItemDescription() - Outputs the item name and description
+void ItemToPurchase::PrintItemDescription() {
+  cout << itemName << " " << itemDescription << endl;
 // Private data members
 // string itemDescription - Initialized in default constructor to "none"
