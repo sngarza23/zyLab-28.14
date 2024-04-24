@@ -7,17 +7,54 @@ using namespace std;
 #include "ShoppingCart.h"
 
 void PrintMenu() {
-   /* Type your code here */
+   cout << " MENU" << endl;
+   cout << "a - Add item to cart" << endl;
+   cout << "d - Remove item from cart" << ednl;
+   cout << "c - Change item quantity" << ednl;
+   cout << "i - Output shopping cart" << endl;
+   cout << "q - Quit" << endl;
+   cout << endl;
+   cout << "Choose an option: " << endl;
    
 }
 
 void ExecuteMenu(char option, ShoppingCart& theCart) {
-   /* Type your code here */
-   
+   switch(option) {
+      case 'a':
+         break;
+      case 'd':
+         break;
+      case 'c':
+         break;
+      case 'i':
+         break;
+      case 'q':
+         break;
+      default:
+      cout << "No go again." << endl;
+   }
 }
 
 int main() {
-   /* Type your code here */
+   string customerName, currerntDate;
+   cout << "Enter customer's name: ";
+   getline(cin, customerName);
+   cout << "Enter today's date: ";
+   getline(cin, currentDate);
+   cout <<"Customer name: " << customer Name << endl;
+   cout << Today's date: " << currentDate << endl;
+
+   ShoppingCart cart(customerName, currentDate);
+
+   char choice;
+   do { PrintMenu();
+       cout <<"Choose an option: ";
+       cin >> choice;
+       cin.ignore();
+
+       ExecuteMenu(choice, cart);
+
+      }while (choice != 'q');
    
    return 0;
 }
