@@ -33,7 +33,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
 }
 
 int main() {
-   string customerName, currerntDate;
+   string customerName, currentDate;
    cout << "Enter customer's name: ";
    getline(cin, customerName);
    cout << "Enter today's date: ";
