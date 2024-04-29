@@ -1,54 +1,47 @@
-#include <iostream>
 #include "ItemToPurchase.h"
+#include <iostream>
 
-// Parameterized constructor to assign item name, item description, item price, and item quantity (default values of 0).
-ItemToPurchase::ItemToPurchase(string itemName, string itemDescription, int itemPrice, int itemQuantity) {
+ItemToPurchase::ItemToPurchase() : itemName("none"), itemDescription("none"), itemPrice(0), itemQuantity(0) {}
 
-// Public member functions
-this->itemName = itemName;
-this->itemDescription = itemDescription;
-this->itemPrice = itemPrice;
-this->itemQuantity = itemQuantity;
+ItemToPurchase::ItemToPurchase(const std::string& name, const std::string& description, int price, int quantity)
+    : itemName(name), itemDescription(description), itemPrice(price), itemQuantity(quantity) {}
+
+void ItemToPurchase::SetName(const std::string& name) {
+    itemName = name;
 }
 
-//Default constructor
-ItemToPurchase::ItemToPurchase() {
-  itemName = "none";
-  itemDescription = "none";
-  itemPrice = 0;
-  itemQuantity = 0;
+void ItemToPurchase::SetDescription(const std::string& description) {
+    itemDescription = description;
 }
 
-// SetDescription() mutator & GetDescription() accessor (2 pts)
-void ItemToPurchase::SetDescription(string description) {
-  itemDescription = description;
-}
 void ItemToPurchase::SetPrice(int price) {
-  itemPrice = price;
+    itemPrice = price;
 }
+
 void ItemToPurchase::SetQuantity(int quantity) {
-  itemQuantity = quantity;
+    itemQuantity = quantity;
 }
 
-string ItemToPurchase::GetName() const{
-  return itemName; 
-}
-int ItemToPurchase::GetPrice() const{
-  return itemPrice;
+std::string ItemToPurchase::GetName() const {
+    return itemName;
 }
 
-string ItemToPurchase::GetDescription() const{
-  return itemDescription;
+std::string ItemToPurchase::GetDescription() const {
+    return itemDescription;
 }
+
+int ItemToPurchase::GetPrice() const {
+    return itemPrice;
+}
+
 int ItemToPurchase::GetQuantity() const {
-   return itemQuantity;
+    return itemQuantity;
 }
 
-// PrintItemCost() - Outputs the item name followed by the quantity, price, and subtotal
-void ItemToPurchase::PrintItemCost() {
-  cout << itemName << " " << itemQuantity << "$ "<< itemPrice << "= $ "<< itemPrice * itemQuantity << endl;
+void ItemToPurchase::PrintItemCost() const {
+    std::cout << itemName << " " << itemQuantity << " @ $" << itemPrice << " = $" << (itemQuantity * itemPrice) << std::endl;
 }
-// PrintItemDescription() - Outputs the item name and description
-void ItemToPurchase::PrintItemDescription() {
-  cout << itemName << ": " << itemDescription << endl;
+
+void ItemToPurchase::PrintItemDescription() const {
+    std::cout << itemName << ": " << itemDescription << std::endl;
 }
