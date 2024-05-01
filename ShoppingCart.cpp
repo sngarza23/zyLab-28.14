@@ -97,7 +97,7 @@ void ShoppingCart::PrintTotal() {
 }
 
 void ShoppingCart::PrintDescriptions() {
-   cout << "OUTPUT ITEMS' DESCRIPTION" << endl;
+   cout << "OUTPUT ITEMS' DESCRIPTIONS" << endl;
     cout << customerName << "'s Shopping Cart - " << currentDate << endl;
     cout << endl;
     cout << "Item Descriptions" << endl;
