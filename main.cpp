@@ -53,11 +53,11 @@ void ExecuteMenu(char choice, ShoppingCart& cart) {
             break;
         }
         case 'i':
-            cout << "OUTPUT ITEMS' DESCRIPTIONS" << endl;
+            //cout << "OUTPUT ITEMS' DESCRIPTIONS" << endl;
             cart.PrintDescriptions();
             break;
         case 'o':
-            cout << "OUTPUT SHOPPING CART" << endl;
+            //cout << "OUTPUT SHOPPING CART" << endl;
             cart.PrintTotal();
             break;
         case 'q':
