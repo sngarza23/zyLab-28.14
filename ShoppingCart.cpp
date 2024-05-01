@@ -78,19 +78,21 @@ double ShoppingCart::GetCostOfCart() {
 
 void ShoppingCart::PrintTotal() {
    cout << "OUTPUT SHOPPING CART" << endl;
-    cout << customerName << "'s Shopping Cart - " << currentDate << endl;
-    cout << "Number of Items: " << GetNumItemsInCart() << endl;
-    cout << endl;
-    if (cartItems.empty()) {
+   cout << customerName << "'s Shopping Cart - " << currentDate << endl;
+   cout << "Number of Items: " << GetNumItemsInCart() << endl;
+   cout << endl;
+   if (cartItems.empty()) {
         cout << "SHOPPING CART IS EMPTY" << endl;
         cout << endl;
-        cout << fixed << setprecision(2) << "Total: $0" << endl;
+        //cout << fixed << setprecision(2) << "Total: $0" << endl;
+        cout << fixed << "Total: $0" << endl;
     } else {
         for (const auto& item : cartItems) {
             item.PrintItemCost();
         }
         cout << endl;
-        cout << fixed << setprecision(2) << "Total: $" << GetCostOfCart() << endl;
+        cout << fixed << setprecision(0) << "Total: $" << GetCostOfCart() << endl;
+
     }
 }
 
