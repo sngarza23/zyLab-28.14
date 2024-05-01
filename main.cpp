@@ -1,5 +1,5 @@
 // https://github.com/sngarza23/zyLab-28.14.git
-//partner Chiara Tesoriero
+//partner Chiara Tesoriero and Sam Garza
 #include <iostream>
 #include <iomanip>
 #include "ShoppingCart.h"
