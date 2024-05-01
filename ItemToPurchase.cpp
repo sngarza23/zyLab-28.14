@@ -1,54 +1,102 @@
 #include <iostream>
-#include <string>
-#include "ItemToPurchase.h"
-using namespace std;
-ItemToPurchase::ItemToPurchase() {
-itemName = "none";
-itemDescription = "none";
-itemPrice = 0;
-itemQuantity = 0;
-return;
+#include <iomanip>
+#include "ShoppingCart.h"
+
+ShoppingCart::ShoppingCart() {
+    customerName = "none";
+    currentDate = "January 1, 2016";
 }
-ItemToPurchase::ItemToPurchase(string name, string description, int price, int quantity) {
-itemName = name;
-itemDescription = description;
-itemPrice = price;
-itemQuantity = quantity;
-return;
+
+ShoppingCart::ShoppingCart(string name, string date) {
+    customerName = name;
+    currentDate = date;
 }
-void ItemToPurchase::SetName(string name) {
-itemName = name;
-return;
+
+string ShoppingCart::GetCustomerName() const {
+    return customerName;
 }
-string ItemToPurchase::GetName() const {
-return itemName;
+
+string ShoppingCart::GetDate() const {
+    return currentDate;
 }
-void ItemToPurchase::SetDescription(string description) {
-itemDescription = description;
-return;
+
+void ShoppingCart::AddItem(ItemToPurchase item) {
+    cartItems.push_back(item);
 }
-string ItemToPurchase::GetDescription() const {
-return itemDescription;
+
+void ShoppingCart::RemoveItem(string name) {
+    bool found = false;
+    for (auto it = cartItems.begin(); it != cartItems.end(); ++it) {
+        if (it->GetName() == name) {
+            cartItems.erase(it);
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "Item not found in cart. Nothing removed." << endl;
+    }
 }
-void ItemToPurchase::SetPrice(int price) {
-itemPrice = price;
-return;
+
+void ShoppingCart::ModifyItem(ItemToPurchase item) {
+    bool found = false;
+    for (auto& cartItem : cartItems) {
+        if (cartItem.GetName() == item.GetName()) {
+            if (item.GetDescription() != "none") {
+                cartItem.SetDescription(item.GetDescription());
+            }
+            if (item.GetPrice() != 0) {
+                cartItem.SetPrice(item.GetPrice());
+            }
+            if (item.GetQuantity() != 0) {
+                cartItem.SetQuantity(item.GetQuantity());
+            }
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "Item not found in cart. Nothing modified." << endl;
+    }
 }
-int ItemToPurchase::GetPrice() const {
-return itemPrice;
+
+int ShoppingCart::GetNumItemsInCart() {
+    int totalQuantity = 0;
+    for (const auto& item : cartItems) {
+        totalQuantity += item.GetQuantity();
+    }
+    return totalQuantity;
 }
-void ItemToPurchase::SetQuantity(int quantity) {
-itemQuantity = quantity;
-return;
+
+double ShoppingCart::GetCostOfCart() {
+    double totalCost = 0.0;
+    for (const auto& item : cartItems) {
+        totalCost += (item.GetPrice() * item.GetQuantity());
+    }
+    return totalCost;
 }
-int ItemToPurchase::GetQuantity() const {
-return itemQuantity;
+
+void ShoppingCart::PrintTotal() {
+    cout << customerName << "'s Shopping Cart - " << currentDate << endl;
+    cout << "Number of Items: " << GetNumItemsInCart() << endl << endl;
+    if (cartItems.empty()) {
+        cout << "SHOPPING CART IS EMPTY" << endl;
+    } else {
+        for (const auto& item : cartItems) {
+            item.PrintItemCost();
+        }
+        cout << fixed << setprecision(2) << "Total: $" << GetCostOfCart() << endl;
+    }
 }
-void ItemToPurchase::PrintItemCost() const {
-cout << itemName << " " << itemQuantity << " @ $" << itemPrice << " = $" << itemQuantity * itemPrice << endl;
-return;
-}
-void ItemToPurchase::PrintItemDescription() const {
-cout << itemName << ": " << itemDescription << endl;
-return;
+
+void ShoppingCart::PrintDescriptions() {
+    cout << customerName << "'s Shopping Cart - " << currentDate << endl << endl;
+    cout << "Item Descriptions" << endl;
+    if (cartItems.empty()) {
+        cout << "SHOPPING CART IS EMPTY" << endl;
+    } else {
+        for (const auto& item : cartItems) {
+            item.PrintItemDescription();
+        }
+    }
 }
