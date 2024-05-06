@@ -1,4 +1,4 @@
-// https://github.com/sngarza23/zyLab-28.14.git
+// https://learn.zybooks.com/zybook/SMUCS1342YurukSpring2024/chapter/28/section/14
 //partner Chiara Tesoriero and Sam Garza
 #include <iostream>
 #include <iomanip>
